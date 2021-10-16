@@ -70,7 +70,7 @@ void GetNumberOfUniqueScrambles(std::string &str) {
         } else {
         }
 
-        std::cout << scrambled.size();
+        std::cout << scrambled.size() << "\n";
     }
 }
 

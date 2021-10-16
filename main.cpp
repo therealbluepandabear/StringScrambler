@@ -1,6 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <ctime>
+#include <set>
+#include <algorithm>
+#include <map>
 
 class RandomNumberGenerator {
 public:
@@ -16,10 +19,52 @@ public:
 };
 
 std::string ScrambleString(std::string &str) {
+    std::vector<char> asVector;
+
+    for (auto c : str) {
+        asVector.push_back(c);
+    }
+
+    std::vector<int> randomList;
+    while (randomList.size() != asVector.size()) {
+        auto random = RandomNumberGenerator::Random(0, asVector.size() - 1);
+
+        if (!(std::find(randomList.begin(), randomList.end(), random) != randomList.end())) {
+            randomList.push_back(random);
+        }
+    }
+
+    std::map<int, int> toIterate;
+
+    std::cout << "\n";
+
+    int index = 0;
+    for (auto i : randomList) {
+        toIterate.insert(std::map<int, int>::value_type(i, index));
+        index++;
+    }
+
+    std::vector<char> scrambled;
+
+    std::vector<char> ref;
+
+    for (auto const &[key, val] : toIterate)
+    {
+        ref.push_back(asVector[val]);
+
+        std::cout << key
+                  << ':'
+                  << val
+                  << "\n";
+    }
+
+    for (auto c : ref) {
+        std::cout << c;
+    }
 }
 
 int main() {
-    std::string str = "Hi";
+    std::string str = "Hio";
     ScrambleString(str);
 
     return 0;

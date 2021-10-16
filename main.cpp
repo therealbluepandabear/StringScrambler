@@ -27,7 +27,7 @@ std::string ScrambleString(std::string &str) {
 
     std::vector<int> randomList;
     while (randomList.size() != asVector.size()) {
-        auto random = RandomNumberGenerator::Random(0, asVector.size() - 1);
+        auto random = RandomNumberGenerator::Random(0, (int)asVector.size() - 1);
 
         if (!(std::find(randomList.begin(), randomList.end(), random) != randomList.end())) {
             randomList.push_back(random);
@@ -51,14 +51,18 @@ std::string ScrambleString(std::string &str) {
         ref.push_back(asVector[val]);
     }
 
-    for (auto c : ref) {
-        std::cout << c;
+    std::string asStr;
+
+    for (auto letter : ref) {
+        asStr += letter;
     }
+
+    return asStr;
 }
 
 int main() {
-    std::string str = "Hello";
-    ScrambleString(str);
+    std::string str = "HELLO";
+    std::cout << ScrambleString(str) << std::endl;
 
     return 0;
 }

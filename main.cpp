@@ -48,14 +48,8 @@ std::string ScrambleString(std::string &str) {
 
     std::vector<char> ref;
 
-    for (auto const &[key, val] : toIterate)
-    {
+    for (auto const &[key, val] : toIterate) {
         ref.push_back(asVector[val]);
-
-        std::cout << key
-                  << ':'
-                  << val
-                  << "\n";
     }
 
     for (auto c : ref) {
@@ -64,7 +58,7 @@ std::string ScrambleString(std::string &str) {
 }
 
 int main() {
-    std::string str = "Hio";
+    std::string str = "HelloMyFriend";
     ScrambleString(str);
 
     return 0;

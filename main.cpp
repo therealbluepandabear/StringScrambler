@@ -36,8 +36,6 @@ std::string ScrambleString(std::string &str) {
 
     std::map<int, int> toIterate;
 
-    std::cout << "\n";
-
     int index = 0;
     for (auto i : randomList) {
         toIterate.insert(std::map<int, int>::value_type(i, index));
@@ -48,6 +46,7 @@ std::string ScrambleString(std::string &str) {
 
     std::vector<char> ref;
 
+    ref.reserve(toIterate.size());
     for (auto const &[key, val] : toIterate) {
         ref.push_back(asVector[val]);
     }
@@ -58,7 +57,7 @@ std::string ScrambleString(std::string &str) {
 }
 
 int main() {
-    std::string str = "HelloMyFriend";
+    std::string str = "Hello";
     ScrambleString(str);
 
     return 0;

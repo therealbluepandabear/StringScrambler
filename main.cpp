@@ -60,7 +60,7 @@ std::string ScrambleString(std::string &str) {
     return asStr;
 }
 
-int GetNumberOfUniqueScrambles(std::string &str) {
+void GetNumberOfUniqueScrambles(std::string &str) {
     std::vector<std::string> scrambled;
     for (int i = 0; i < 2147483647; i++) {
         auto random = ScrambleString(str);
@@ -69,15 +69,16 @@ int GetNumberOfUniqueScrambles(std::string &str) {
             scrambled.push_back(random);
         } else {
         }
+
+        std::cout << scrambled.size();
     }
-    return scrambled.size();
 }
 
 int main() {
 
-    std::string str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    std::string str = "ABCDEFGH";
 
-    std::cout << GetNumberOfUniqueScrambles(str) << "\n";
+    GetNumberOfUniqueScrambles(str);
 
     return 0;
 }

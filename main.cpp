@@ -60,9 +60,24 @@ std::string ScrambleString(std::string &str) {
     return asStr;
 }
 
+int GetNumberOfUniqueScrambles(std::string &str) {
+    std::vector<std::string> scrambled;
+    for (int i = 0; i < 1000; i++) {
+        auto random = ScrambleString(str);
+
+        if (!(std::find(scrambled.begin(), scrambled.end(), random) != scrambled.end())) {
+            scrambled.push_back(random);
+        } else {
+        }
+    }
+    return scrambled.size();
+}
+
 int main() {
+
     std::string str = "HELLO";
-    std::cout << ScrambleString(str) << std::endl;
+
+    std::cout << GetNumberOfUniqueScrambles(str) << "\n";
 
     return 0;
 }

@@ -61,7 +61,11 @@ std::string ScrambleString(std::string &str) {
 }
 
 std::string ScrambleStringItr(std::string &str, int iterations) {
-
+    std::string scrambled;
+    for (int i = 0; i < iterations; i++) {
+        scrambled = ScrambleString(str);
+    }
+    return scrambled;
 }
 
 [[noreturn]] void GetNumberOfUniqueScrambles(std::string &str) {
@@ -79,6 +83,10 @@ std::string ScrambleStringItr(std::string &str, int iterations) {
 }
 
 int main() {
+    std::string in = "Hello";
+    std::string scrambledTenTimes = ScrambleStringItr(in, 100);
+
+    std::cout << scrambledTenTimes << "\n";
 
     return 0;
 }
